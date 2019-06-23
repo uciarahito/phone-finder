@@ -1,0 +1,76 @@
+{
+    "phones": [
+        {
+            "name": "iPhone 7",
+            "brand": "Apple",
+            "release_year": 2016,
+            "description": "4.7 in (120 mm), 4.1   in (100 mm) by 2.3 in (58 mm), 16:9 aspect ratio, aluminosilicate glass covered 16,777,216-color (24-bit), IPS LCD screen, 1,334 ×  750 px screen resolution at 326 ppi, 1400:1 contrast ratio, 625 cd⁄m2 max brightness, LED backlight and fingerprint-resistant oleophobic coating"
+        },
+        {
+            "name": "iPhone 6s",
+            "brand": "Apple",
+            "release_year": 2015,
+            "description": ".7 in (120 mm), 4.1   in (100 mm) by 2.3 in (58 mm), 16:9 aspect ratio, aluminosilicate glass covered 16,777,216-color (24-bit), IPS LCD screen, 1,334 ×  750 px screen resolution at 326 ppi, 1400:1 contrast ratio, 625 cd⁄m2 max brightness, LED backlight and fingerprint-resistant oleophobic coating"
+        },
+        {
+            "name": "Galaxy S8",
+            "brand": "Samsung",
+            "release_year": 2017,
+            "description": "Samsung announced the Samsung Galaxy S8 and Samsung Galaxy S8+ smartphones on March 29, 2017. It features an iris scanner, which was not present on the Galaxy S7 phones."
+        },
+        {
+            "name": "Galaxy S7",
+            "brand": "Samsung",
+            "release_year": 2016,
+            "description": "Samsung announced the Samsung Galaxy S7 and Samsung Galaxy S7+ smartphones on March 29, 2016. It features an iris scanner, which was not present on the Galaxy S6 phones."
+        },
+        {
+            "name": "Mi 6",
+            "brand": "Xiaomi",
+            "release_year": 2017,
+            "description": null
+        },
+        {
+            "name": "G6",
+            "brand": "LG",
+            "release_year": 2017,
+            "description": "148.9 x  71.9 x 7.9 mm (5.86 x  2.83 x  0.31 in), 163 g  (5.75 oz), Corning Glass 5 back panel"
+        },
+        {
+            "name": "Oppo A78",
+            "brand": "Oppo",
+            "release_year": 2014,
+            "description": "148.9 x  71.9 x 7.9 mm (5.86 x  2.83 x  0.31 in), 163 g  (5.75 oz), Corning Glass 5 back panel"
+        },
+        {
+            "name": "G7",
+            "brand": "LG",
+            "release_year": 2016,
+            "description": "148.9 x  71.9 x 7.9 mm (5.86 x  2.83 x  0.31 in), 163 g  (5.75 oz), Corning Glass 5 back panel"
+        },
+        {
+            "name": "N78",
+            "brand": "Nokia",
+            "release_year": 2013,
+            "description": "148.9 x  71.9 x 7.9 mm (5.86 x  2.83 x  0.31 in), 163 g  (5.75 oz), Corning Glass 5 back panel"
+        },
+        {
+            "name": "Oneplus 7 Pro",
+            "brand": "Oneplus",
+            "release_year": 2014,
+            "description": "148.9 x  71.9 x 7.9 mm (5.86 x  2.83 x  0.31 in), 163 g  (5.75 oz), Corning Glass 5 back panel"
+        },
+        {
+            "name": "Nokia Asha 210",
+            "brand": "Nokia",
+            "release_year": 2013,
+            "description": "148.9 x  71.9 x 7.9 mm (5.86 x  2.83 x  0.31 in), 163 g  (5.75 oz), Corning Glass 5 back panel"
+        },
+        {
+            "name": "Oneplus 6",
+            "brand": "Oneplus",
+            "release_year": 2013,
+            "description": "148.9 x  71.9 x 7.9 mm (5.86 x  2.83 x  0.31 in), 163 g  (5.75 oz), Corning Glass 5 back panel"
+        }
+    ]
+}
