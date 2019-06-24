@@ -70,42 +70,30 @@ class PhoneFinder extends PureComponent {
 		})
 	}
 
-	handleOnSearchChange = ({ target }) => {
-		const { currentFilterredData, filterYears, filterBrands } = this.state
-
+	handleOnSearchChange = async ({ target }) => {
 		RegExp.escape = function (string) {
 			return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
 		}
 		var keyword = new RegExp(RegExp.escape(target.value.toString().toLowerCase()))
-		let newData = currentFilterredData.filter(e => {
-			return e.name.toLowerCase().match(keyword)
-		})
-		this.setState({
+		await this.setState({
 			[target.name]: target.value,
-			dataPhones: newData
+			keyword
 		})
-		if ((filterYears && filterYears.length > 0) || (filterBrands && filterBrands.length > 0)) {
-			this.setState({ defaultData: newData })
-		}
+		this.reNewData()
 	}
 
 	handleOnKeyUp = e => {
-		const { searchPhone, currentFilterredData, filterYears, filterBrands } = this.state
+		const { searchPhone } = this.state
 
 		if ((searchPhone && e.keyCode === 46) || (searchPhone && e.keyCode === 8)) {
 			RegExp.edataPhonesscape = function (string) {
 				return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
 			};
 			var keyword = new RegExp(RegExp.escape(searchPhone.toString().toLowerCase()))
-			let newData = currentFilterredData.filter(e => {
-				return e.name.toLowerCase().match(keyword)
-			})
 			this.setState({
-				dataPhones: newData
+				keyword
 			})
-			if ((filterYears && filterYears.length > 0) || (filterBrands && filterBrands.length > 0)) {
-				this.setState({ defaultData: newData })
-			}
+			this.reNewData()
 		}
 	}
 
@@ -130,31 +118,40 @@ class PhoneFinder extends PureComponent {
 		} else if (!checked) {
 			isChecked === 'years' ? filterYears.splice(filterYears.indexOf(Number(name)), 1) : filterBrands.splice(filterBrands.indexOf(name), 1)
 		}
-		if (isChecked === 'years') {
-			this.setState({
-				filterYears
-			})
-		} else {
-			this.setState({
-				filterBrands
-			})
-		}
+		this.setState({
+			filterYears
+		})
 		this.reNewData()
 	}
 
 	reNewData = () => {
-		const { filterBrands, defaultData, filterYears } = this.state
-		let newData = [...defaultData]
-		if (filterYears.length > 0 && filterBrands.length > 0) {
-			newData = [...defaultData].filter((e) => filterYears.includes(+e.release_year) && filterBrands.includes(e.brand))
-		} else if (filterBrands.length > 0) {
-			newData = [...defaultData].filter((e) => filterBrands.includes(e.brand))
-		} else if (filterYears.length > 0) {
-			newData = [...defaultData].filter((e) => filterYears.includes(+e.release_year))
+		const { filterBrands, defaultData, filterYears, searchPhone, keyword } = this.state
+		let newData = []
+		if (filterBrands.length === 0 && filterYears.length === 0 && searchPhone.length === 0) {
+			newData = defaultData
+		} else {
+			newData = [...defaultData].filter(e => {
+				let temp = []
+				if (filterBrands.length > 0 && filterYears.length > 0 && searchPhone.length > 0) {
+					temp = filterYears.includes(+e.release_year) && filterBrands.includes(e.brand) && e.name.toLowerCase().match(keyword)
+				} else if (filterBrands.length > 0 && filterYears.length > 0 && searchPhone.length === 0) {
+					temp = filterYears.includes(+e.release_year) && filterBrands.includes(e.brand)
+				} else if (filterBrands.length === 0 && filterYears.length > 0 && searchPhone.length > 0) {
+					temp = filterYears.includes(+e.release_year) && e.name.toLowerCase().match(keyword)
+				} else if (filterBrands.length > 0 && filterYears.length === 0 && searchPhone.length > 0) {
+					temp = filterBrands.includes(e.brand) && e.name.toLowerCase().match(keyword)
+				} else if (filterBrands.length > 0 && filterYears.length === 0 && searchPhone.length === 0) {
+					temp = filterBrands.includes(e.brand)
+				} else if (filterBrands.length === 0 && filterYears.length === 0 && searchPhone.length > 0) {
+					temp = e.name.toLowerCase().match(keyword)
+				} else if (filterBrands.length === 0 && filterYears.length > 0 && searchPhone.length === 0) {
+					temp = filterYears.includes(+e.release_year)
+				}
+				return temp
+			})
 		}
 		this.setState({
-			dataPhones: newData,
-			currentFilterredData: newData
+			dataPhones: newData
 		})
 	}
 
