@@ -71,7 +71,7 @@ class PhoneFinder extends PureComponent {
 	}
 
 	handleOnSearchChange = ({ target }) => {
-		const { currentFilterredData } = this.state
+		const { currentFilterredData, filterYears, filterBrands } = this.state
 
 		RegExp.escape = function (string) {
 			return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
@@ -84,6 +84,9 @@ class PhoneFinder extends PureComponent {
 			[target.name]: target.value,
 			dataPhones: newData
 		})
+		if (filterYears && filterYears.length || filterBrands) {
+			this.setState({ defaultData: newData })
+		}
 	}
 
 	handleOnKeyUp = e => {
