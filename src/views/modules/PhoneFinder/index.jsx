@@ -84,13 +84,13 @@ class PhoneFinder extends PureComponent {
 			[target.name]: target.value,
 			dataPhones: newData
 		})
-		if (filterYears && filterYears.length || filterBrands) {
+		if ((filterYears && filterYears.length > 0) || (filterBrands && filterBrands.length > 0)) {
 			this.setState({ defaultData: newData })
 		}
 	}
 
 	handleOnKeyUp = e => {
-		const { searchPhone, currentFilterredData } = this.state
+		const { searchPhone, currentFilterredData, filterYears, filterBrands } = this.state
 
 		if ((searchPhone && e.keyCode === 46) || (searchPhone && e.keyCode === 8)) {
 			RegExp.edataPhonesscape = function (string) {
@@ -103,6 +103,9 @@ class PhoneFinder extends PureComponent {
 			this.setState({
 				dataPhones: newData
 			})
+			if ((filterYears && filterYears.length > 0) || (filterBrands && filterBrands.length > 0)) {
+				this.setState({ defaultData: newData })
+			}
 		}
 	}
 
@@ -127,9 +130,15 @@ class PhoneFinder extends PureComponent {
 		} else if (!checked) {
 			isChecked === 'years' ? filterYears.splice(filterYears.indexOf(Number(name)), 1) : filterBrands.splice(filterBrands.indexOf(name), 1)
 		}
-		this.setState({
-			filterYears
-		})
+		if (isChecked === 'years') {
+			this.setState({
+				filterYears
+			})
+		} else {
+			this.setState({
+				filterBrands
+			})
+		}
 		this.reNewData()
 	}
 
